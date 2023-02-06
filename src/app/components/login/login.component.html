@@ -1,0 +1,41 @@
+<form (ngSubmit)="submitForm()" [formGroup]="form" autocomplete="off">
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
+    <div class="card form-container">
+      <div class="card-header">Login</div>
+      <!-- Display error message -->
+      <div *ngIf="errorMessage">
+        <p class="text-danger">{{ errorMessage }}</p>
+      </div>
+      <!-- /Display error message -->
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Ex. profanis"
+          formControlName="username"
+        />
+      </div>
+      <!-- /Username -->
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Ex. s3c3tP@ss"
+          formControlName="password"
+        />
+      </div>
+      <!-- /Password -->
+
+      <div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </div>
+</form>

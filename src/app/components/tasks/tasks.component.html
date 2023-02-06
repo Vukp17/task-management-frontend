@@ -1,0 +1,80 @@
+
+<input type="text" [(ngModel)]="searchTerm">
+
+
+<!-- New task form -->
+<div *ngIf="showForm">
+    <form (ngSubmit)="submitNewTaskForm()" [formGroup]="form" autocomplete="off">
+      <!-- Task Title -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+        />
+      </div>
+      <!-- /Task Title -->
+  
+      <!-- Task Description -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <!-- /Task Description -->
+  
+      <!-- Task Status -->
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select
+          class="form-control"
+          id="status"
+          formControlName="status"
+        >
+          <option value="pending">OPEN</option>
+          <option value="in-progress">DONE</option>
+        </select>
+      </div>
+      <!-- /Task Status -->
+  
+      <div>
+       
+      </div>
+    </form>
+    <button type="submit" class="btn btn-primary" (click)="submitNewTaskForm()">Add Task</button>
+
+  </div>
+  <!-- /New task form -->
+  
+  <!-- Add new task button -->
+  <button class="btn btn-primary" (click)="toggleForm()" *ngIf="!showForm" >Add New Task</button>
+  <!-- /Add new task button -->
+  
+  <!-- Task table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.status }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteTask(task.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- /Task table -->
+  
